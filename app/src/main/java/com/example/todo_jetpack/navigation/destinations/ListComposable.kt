@@ -4,6 +4,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.todo_jetpack.ui.screens.list.ListScreen
 import com.example.todo_jetpack.util.Constants
 
 fun NavGraphBuilder.listComposable(
@@ -15,6 +16,6 @@ fun NavGraphBuilder.listComposable(
             type = NavType.StringType
         })
     ){
-
+        ListScreen(navigateToTaskScreen = navigateToTaskScreen)
     }
 }

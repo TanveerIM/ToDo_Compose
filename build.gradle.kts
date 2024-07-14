@@ -9,6 +9,6 @@ plugins {
 allprojects {
 
     // Declare the Room version here
-    extra["room_version"] = "2.6.1"
+    extra["room_version"] = "2.5.1"
     extra["nav_version"] = "2.7.7"
 }
