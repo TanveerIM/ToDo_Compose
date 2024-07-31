@@ -8,7 +8,7 @@ import com.example.todo_jetpack.ui.screens.list.ListScreen
 import com.example.todo_jetpack.util.Constants
 
 fun NavGraphBuilder.listComposable(
-    navigateToTaskScreen: (Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
     composable(
         route = Constants.LIST_SCREEN,
