@@ -88,7 +88,7 @@ fun DefaultListAppBar(
             containerColor = MaterialTheme.colorScheme.primaryContainer
         ),
         title = {
-            Text(text = "Tasks")
+            Text(text = stringResource(R.string.tasks))
         },
         actions = {
             ListAppBarActions(
@@ -229,7 +229,7 @@ fun SearchAppBar(
                     onClick = {}) {
                     Icon(
                         imageVector = Icons.Filled.Search,
-                        contentDescription = "Search Icon"
+                        contentDescription = stringResource(R.string.search_icon)
                     )
                 }
             },
@@ -252,7 +252,7 @@ fun SearchAppBar(
                             }
                         }
                     }) {
-                    Icon(imageVector = Icons.Filled.Close, contentDescription = "Close Icon");
+                    Icon(imageVector = Icons.Filled.Close, contentDescription = stringResource(R.string.close_icon));
                 }
             },
             keyboardOptions = KeyboardOptions(
