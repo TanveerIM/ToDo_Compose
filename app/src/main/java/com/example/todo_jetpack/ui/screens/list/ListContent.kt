@@ -1,6 +1,7 @@
 package com.example.todo_jetpack.ui.screens.list
 
 import android.os.Build
+import android.util.Log
 import android.view.RoundedCorner
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Canvas
@@ -11,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -33,14 +36,29 @@ import com.example.todo_jetpack.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.example.todo_jetpack.ui.theme.TASK_ITEM_ELEVATION
 
 @Composable
-fun ListContent() {
-
+fun ListContent(
+    tasks: List<ToDoTask>,
+    navigateToTaskScreen: (taskId: Int) -> Unit
+) {
+    LazyColumn {
+        items(
+            items = tasks,
+            key = { task ->
+                task.id
+            }
+        ) { task ->
+            Log.e("TAG", "ListContent: $task", )
+            TaskItem(
+                toDoTask = task,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
+        }
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun TaskItem(
+    fun TaskItem(
     toDoTask: ToDoTask,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
@@ -63,7 +81,7 @@ fun TaskItem(
                     modifier = Modifier.weight(8f),
                     text = toDoTask.title,
                     color = MaterialTheme.colorScheme.primary,
-                    style = MaterialTheme.typography.labelMedium,
+                    style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1
                 )
@@ -90,7 +108,7 @@ fun TaskItem(
                 modifier = Modifier.fillMaxWidth(),
                 text = toDoTask.description,
                 color = MaterialTheme.colorScheme.secondary,
-                style = MaterialTheme.typography.labelSmall,
+                style = MaterialTheme.typography.bodyMedium,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
                 )

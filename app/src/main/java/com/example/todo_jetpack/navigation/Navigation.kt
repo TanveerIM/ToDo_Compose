@@ -1,5 +1,7 @@
 package com.example.todo_jetpack.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
@@ -9,6 +11,7 @@ import com.example.todo_jetpack.navigation.destinations.taskComposable
 import com.example.todo_jetpack.ui.viewmodels.SharedViewModel
 import com.example.todo_jetpack.util.Constants
 
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun SetupNavigation(
     navController: NavHostController,
