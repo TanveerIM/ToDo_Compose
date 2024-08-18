@@ -35,19 +35,22 @@ import com.example.todo_jetpack.data.models.ToDoTask
 import com.example.todo_jetpack.ui.theme.LARGE_PADDING
 import com.example.todo_jetpack.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.example.todo_jetpack.ui.theme.TASK_ITEM_ELEVATION
+import com.example.todo_jetpack.util.RequestState
 
 @Composable
 fun ListContent(
-    tasks: List<ToDoTask>,
+    tasks: RequestState<List<ToDoTask>>,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    if (tasks.isEmpty()) {
-        EmptyContent()
-    } else {
-        DisplayTasks(
-            tasks = tasks,
-            navigateToTaskScreen = navigateToTaskScreen
-        )
+    if (tasks is RequestState.Success) {
+        if (tasks.data.isEmpty()) {
+            EmptyContent()
+        } else {
+            DisplayTasks(
+                tasks = tasks.data,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
+        }
     }
 }
 
