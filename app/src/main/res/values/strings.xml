@@ -9,4 +9,6 @@
     <string name="close_icon">Close Icon</string>
     <string name="sad_face_icon">Sad Face Icon</string>
     <string name="no_tasks_found">No Tasks Found.</string>
+    <string name="add_task">Add Task</string>
+    <string name="arrow_back">Arrow Back</string>
 </resources>
